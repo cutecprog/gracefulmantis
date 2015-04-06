@@ -1,3 +1,9 @@
+Design Document:
+###############
 Based on power towers
 
-Tower in middle of the screen. Blocks spawn on right of screen and move left in a straight level line. Tower shoots pixels at block if collision then block and pixel disappear.
+Minimum viable product:
+----------------------
+Tower in middle of the screen. Blocks spawn on right of screen and move left
+in a straight level line. Tower shoots pixels at blockis. If collision then
+block and pixel disappear.
