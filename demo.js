@@ -1,23 +1,24 @@
 var ctx = document.getElementById('mycanvas').getContext('2d');
-/*var a = setInterval(draw,100);*/
+/*var a = setInterval(draw,100);
 ctx.beginPath();
 ctx.rect(50, 50, 50, 50);
-ctx.stroke();
+ctx.stroke();*/
 
-function block(x,y,speed)
+function Block(x,y,size,speed)
 {
         this.x = x;
         this.y = y;
+        this.size = size
         this.speed = speed;
         this.draw = function()
         {
                 ctx.beginPath();
-                ctx.rect(this.x, this.y, 5, 5);
+                ctx.rect(this.x, this.y, this.size, this.size);
                 ctx.stroke();
         };
         this.clear = function()
         {       
-                ctx.clearRect(this.x-1, this.y-1, 7, 7);
+                ctx.clearRect(this.x-1, this.y-1, this.size+2, this.size+2);
         };
         this.move = function(x,y)
         {
@@ -45,19 +46,21 @@ function block(x,y,speed)
         };
 }
 
-var harvey = new block(5, 5, 1);
+var harvey = new Block(5, 5, 5, 1);
+var fred = new Block(50,50,50,0);
+fred.draw();
 
 document.addEventListener('keydown', function(event) {
     /* Drive x and y vars with arrow keys */
-    if(event.keyCode == 37) {
+    if(event.keyCode == 37)
         harvey.move(-1,0);
-    } else if(event.keyCode == 39) {
+    else if(event.keyCode == 39)
         harvey.move(1,0);
-    } else if(event.keyCode == 38) {
+    else if(event.keyCode == 38)
         harvey.move(0,-1);
-    } else if(event.keyCode == 40) {
+    else if(event.keyCode == 40)
         harvey.move(0,1);     
-    } else if(event.keyCode == 16) /* Toggle speed var */
+    else if(event.keyCode == 16) 
         harvey.toggle_speed();
     /* Detect collision */
     if (harvey.x+5 >= 50 && harvey.x <= 100 && harvey.y+5 >= 50 && harvey.y <= 100) {
