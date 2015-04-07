@@ -77,6 +77,11 @@ document.addEventListener('keydown', function(event) {
         if (harvey.intercepts(fred)) {
                 harvey.set_loc(5,5);
                 harvey.draw();
+                if (harvey.speed == 1)
+                        document.getElementById('controls').innerHTML = 
+                        "Press <b>right shift</b> to <b>speed up</b>";
+                else
+                        document.getElementById('controls').innerHTML = "<br>"
         }
         field.draw();
         document.getElementById('info').innerHTML = '<p class="data">'
