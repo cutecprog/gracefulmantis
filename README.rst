@@ -1,6 +1,6 @@
 Design Document:
 ###############
-Based on power towers
+*Based on power towers*
 
 Minimum viable product:
 ----------------------
