@@ -81,7 +81,7 @@ document.addEventListener('keydown', function(event) {
                         document.getElementById('controls').innerHTML = 
                         "Press <b>right shift</b> to <b>speed up</b>";
                 else
-                        document.getElementById('controls').innerHTML = "<br>"
+                        document.getElementById('controls').innerHTML = "";
         }
         field.draw();
         document.getElementById('info').innerHTML = '<p class="data">'
