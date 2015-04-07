@@ -60,23 +60,25 @@ function Block(x,y,size,speed)
 
 var harvey = new Block(5, 5, 5, 5);
 var fred = new Block(50,50,50,6);
+var field = new Block(0,0,300,0);
 fred.draw();
 
 document.addEventListener('keydown', function(event) {
-    if(event.keyCode == keycode.LEFT_ARROW)
-        harvey.move(-1,0);
-    else if(event.keyCode == keycode.RIGHT_ARROW)
-        harvey.move(1,0);
-    else if(event.keyCode == keycode.UP_ARROW)
-        harvey.move(0,-1);
-    else if(event.keyCode == keycode.DOWN_ARROW)
-        harvey.move(0,1);
-    else if(event.keyCode == keycode.R_SHIFT) 
-        harvey.toggle_speed();
-    if (harvey.intercepts(fred)) {
-        harvey.set_loc(5,5);
-        harvey.draw();
-    }
-    document.getElementById('info').innerHTML = '<p class="data">'
+        if(event.keyCode == keycode.LEFT_ARROW)
+                harvey.move(-1,0);
+        else if(event.keyCode == keycode.RIGHT_ARROW)
+                harvey.move(1,0);
+        else if(event.keyCode == keycode.UP_ARROW)
+                harvey.move(0,-1);
+        else if(event.keyCode == keycode.DOWN_ARROW)
+                harvey.move(0,1);
+        else if(event.keyCode == keycode.R_SHIFT) 
+                harvey.toggle_speed();
+        if (harvey.intercepts(fred)) {
+                harvey.set_loc(5,5);
+                harvey.draw();
+        }
+        field.draw();
+        document.getElementById('info').innerHTML = '<p class="data">'
                                         + harvey.str() + '</p>';
 });
