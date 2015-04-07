@@ -77,5 +77,6 @@ document.addEventListener('keydown', function(event) {
         harvey.set_loc(5,5);
         harvey.draw();
     }
-    document.getElementById('info').innerHTML = '<p>' + harvey.str() + '</p>'
+    document.getElementById('info').innerHTML = '<p class="data">'
+                                        + harvey.str() + '</p>';
 });
