@@ -1,5 +1,13 @@
 var ctx = document.getElementById('mycanvas').getContext('2d');
 
+var keycode = {
+        'LEFT_ARROW': 37,
+        'RIGHT_ARROW': 39,
+        'UP_ARROW': 38,
+        'DOWN_ARROW': 40,
+        'R_SHIFT': 16
+};
+
 function Block(x,y,size,speed)
 {
         this.x = x;
@@ -55,16 +63,15 @@ var fred = new Block(50,50,50,6);
 fred.draw();
 
 document.addEventListener('keydown', function(event) {
-    /* Drive x and y vars with arrow keys */
-    if(event.keyCode == 37)
+    if(event.keyCode == keycode.LEFT_ARROW)
         harvey.move(-1,0);
-    else if(event.keyCode == 39)
+    else if(event.keyCode == keycode.RIGHT_ARROW)
         harvey.move(1,0);
-    else if(event.keyCode == 38)
+    else if(event.keyCode == keycode.UP_ARROW)
         harvey.move(0,-1);
-    else if(event.keyCode == 40)
-        harvey.move(0,1);     
-    else if(event.keyCode == 16) 
+    else if(event.keyCode == keycode.DOWN_ARROW)
+        harvey.move(0,1);
+    else if(event.keyCode == keycode.R_SHIFT) 
         harvey.toggle_speed();
     if (harvey.intercepts(fred)) {
         harvey.set_loc(5,5);
