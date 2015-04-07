@@ -38,6 +38,11 @@ function block(x,y,speed)
         {
                 return '(' + this.x + ', ' + this.y + ')';
         };
+        this.set_loc = function(x,y)
+        {
+                this.x = x;
+                this.y = y;
+        };
 }
 
 var harvey = new block(5, 5, 1);
@@ -56,8 +61,8 @@ document.addEventListener('keydown', function(event) {
         harvey.toggle_speed();
     /* Detect collision */
     if (harvey.x+5 >= 50 && harvey.x <= 100 && harvey.y+5 >= 50 && harvey.y <= 100) {
-        harvey.x = 5;
-        harvey.y = 5;
+        harvey.set_loc(5,5);
+        harvey.draw();
     }
     document.getElementById('info').innerHTML = '<p>' + harvey.str() + '</p>'
 });
