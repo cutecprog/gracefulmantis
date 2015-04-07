@@ -5,7 +5,8 @@ function Block(x,y,size,speed)
         this.x = x;
         this.y = y;
         this.size = size
-        this.speed = speed;
+        this.speed = 1;
+        this.top_speed = speed
         this.draw = function()
         {
                 ctx.beginPath();
@@ -26,7 +27,7 @@ function Block(x,y,size,speed)
         this.toggle_speed = function()
         {
                 if(this.speed==1)
-                        this.speed = 5;
+                        this.speed = this.top_speed;
                 else
                         this.speed = 1;
                 
@@ -49,8 +50,8 @@ function Block(x,y,size,speed)
         }
 }
 
-var harvey = new Block(5, 5, 5, 1);
-var fred = new Block(50,50,50,0);
+var harvey = new Block(5, 5, 5, 5);
+var fred = new Block(50,50,50,6);
 fred.draw();
 
 document.addEventListener('keydown', function(event) {
@@ -65,7 +66,6 @@ document.addEventListener('keydown', function(event) {
         harvey.move(0,1);     
     else if(event.keyCode == 16) 
         harvey.toggle_speed();
-    /* Detect collision */
     if (harvey.intercepts(fred)) {
         harvey.set_loc(5,5);
         harvey.draw();
