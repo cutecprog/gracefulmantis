@@ -1,8 +1,4 @@
 var ctx = document.getElementById('mycanvas').getContext('2d');
-/*var a = setInterval(draw,100);
-ctx.beginPath();
-ctx.rect(50, 50, 50, 50);
-ctx.stroke();*/
 
 function Block(x,y,size,speed)
 {
@@ -44,6 +40,13 @@ function Block(x,y,size,speed)
                 this.x = x;
                 this.y = y;
         };
+        this.intercepts = function(block)
+        {
+               return this.x + this.size >= block.x
+                        && this.x <= block.x + block.size 
+                        && this.y+this.size >= block.y 
+                        && this.y <= block.y + block.size; 
+        }
 }
 
 var harvey = new Block(5, 5, 5, 1);
@@ -63,7 +66,7 @@ document.addEventListener('keydown', function(event) {
     else if(event.keyCode == 16) 
         harvey.toggle_speed();
     /* Detect collision */
-    if (harvey.x+5 >= 50 && harvey.x <= 100 && harvey.y+5 >= 50 && harvey.y <= 100) {
+    if (harvey.intercepts(fred)) {
         harvey.set_loc(5,5);
         harvey.draw();
     }
