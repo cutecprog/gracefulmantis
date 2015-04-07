@@ -4,50 +4,60 @@ ctx.beginPath();
 ctx.rect(50, 50, 50, 50);
 ctx.stroke();
 
-var x = 5;
-var y = 5;
-var speed = 1; 
-
-function draw()
+function block(x,y,speed)
 {
-    ctx.beginPath();
-    ctx.rect(x, y, 5, 5);
-    ctx.stroke();
-    
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.draw = function()
+        {
+                ctx.beginPath();
+                ctx.rect(this.x, this.y, 5, 5);
+                ctx.stroke();
+        };
+        this.clear = function()
+        {       
+                ctx.clearRect(this.x-1, this.y-1, 7, 7);
+        };
+        this.move = function(x,y)
+        {
+                this.clear();
+                this.x += x*this.speed;
+                this.y += y*this.speed;
+                this.draw();
+        };
+        this.toggle_speed = function()
+        {
+                if(this.speed==1)
+                        this.speed = 5;
+                else
+                        this.speed = 1;
+                
+        };
+        this.str = function()
+        {
+                return '(' + this.x + ', ' + this.y + ')';
+        };
 }
 
-function clear()
-{
-    ctx.clearRect(x-1, y-1, 7, 7);
-}
+var harvey = new block(5, 5, 1);
 
 document.addEventListener('keydown', function(event) {
     /* Drive x and y vars with arrow keys */
-    if(event.keyCode == 37 && x >= 5) {
-        clear()
-        x-=speed;
-        draw()
-    } else if(event.keyCode == 39 && x <= 295) {
-        clear()
-        x+=speed;
-        draw()
-    } else if(event.keyCode == 38 && y >= 5) {
-        clear()
-        y-=speed;
-        draw()
-    } else if(event.keyCode == 40 && y <= 295) {
-        clear()
-        y+=speed;
-        draw()
+    if(event.keyCode == 37) {
+        harvey.move(-1,0);
+    } else if(event.keyCode == 39) {
+        harvey.move(1,0);
+    } else if(event.keyCode == 38) {
+        harvey.move(0,-1);
+    } else if(event.keyCode == 40) {
+        harvey.move(0,1);     
     } else if(event.keyCode == 16) /* Toggle speed var */
-        if(speed==1)
-                speed = 5;
-        else
-                speed = 1;
+        harvey.toggle_speed();
     /* Detect collision */
-    if (x+5 >= 50 && x <= 100 && y+5 >= 50 && y <= 100) {
-        x = 5;
-        y = 5;
+    if (harvey.x+5 >= 50 && harvey.x <= 100 && harvey.y+5 >= 50 && harvey.y <= 100) {
+        harvey.x = 5;
+        harvey.y = 5;
     }
-    document.getElementById('info').innerHTML = '<p>' + x + ', ' + y + '</p>'
+    document.getElementById('info').innerHTML = '<p>' + harvey.str() + '</p>'
 });
