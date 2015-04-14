@@ -1,0 +1,26 @@
+* {
+        font-family: monospace;
+        font-size: 10pt;
+        color: gray;
+}
+
+h1 {
+        font-size: 12pt;
+        color: black;
+}
+
+b {
+        font-size: 11pt;
+        color: black;
+}
+
+.data {
+        font-size: 9pt;
+        color: black;
+        margin-top: 0px;
+        margin-left: 300px;
+}
+
+#controls {
+        height:12pt;
+}
