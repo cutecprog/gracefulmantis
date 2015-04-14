@@ -5,22 +5,23 @@ content.scrollLeft = 50;
 content.scrollTop = 50;
 
 ctx.beginPath();
-ctx.rect(200, 200, 800,800);
+ctx.rect(0, 200, 1200, 800);
+ctx.rect(200, 0, 800, 1200);
 ctx.stroke();
 
-/*setInterval(function() {
-        if (content.scrollLeft < 224) {
-                content.scrollLeft = 646;
-        } else if(content.scrollLeft > 870) {
-                content.scrollLeft = 450;
+setInterval(function() {
+        if (content.scrollLeft <= 0) {
+                content.scrollLeft = 800;
+        } else if(content.scrollLeft >= 800) {
+                content.scrollLeft = 0;
         }
-        if (content.scrollTop < 114) {
-                content.scrollTop = 707;
-        } else if(content.scrollTop > 1423) {
-                content.scrollTop = 827;
+        if (content.scrollTop <= 0) {
+                content.scrollTop = 800;
+        } else if(content.scrollTop >= 800) {
+                content.scrollTop = 0;
         }
-}, 10);*/
-
+}, 10);
+/*
 setInterval(function() {
         time_inactive += 1;
 }, 1000);
@@ -33,4 +34,4 @@ setInterval(function() {
 document.addEventListener('keydown', function(event) {
         if(event.keyCode)
                 time_inactive = 0;
-});
+});*/
