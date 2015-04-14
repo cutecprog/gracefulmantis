@@ -1,8 +1,14 @@
 var content = document.getElementById("window");
+var ctx = document.getElementById('content').getContext('2d');
 var time_inactive = 0;
-content.scrollLeft = 435;
-content.scrollTop = 575;
-setInterval(function() {
+content.scrollLeft = 50;
+content.scrollTop = 50;
+
+ctx.beginPath();
+ctx.rect(50, 50, 50,50);
+ctx.stroke();
+
+/*setInterval(function() {
         if (content.scrollLeft < 224) {
                 content.scrollLeft = 646;
         } else if(content.scrollLeft > 870) {
@@ -13,7 +19,7 @@ setInterval(function() {
         } else if(content.scrollTop > 1423) {
                 content.scrollTop = 827;
         }
-}, 10);
+}, 10);*/
 
 setInterval(function() {
         time_inactive += 1;
