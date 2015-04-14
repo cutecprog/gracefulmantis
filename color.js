@@ -5,7 +5,7 @@ content.scrollLeft = 50;
 content.scrollTop = 50;
 
 ctx.beginPath();
-ctx.rect(50, 50, 50,50);
+ctx.rect(200, 200, 800,800);
 ctx.stroke();
 
 /*setInterval(function() {
