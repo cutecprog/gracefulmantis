@@ -9,7 +9,7 @@ var d = document.getElementById('prompt');
 var content = document.getElementById("window");
 content.scrollLeft = 435;
 content.scrollTop = 575;
-setInterval( function() {
+setInterval(function() {
         document.getElementById("data").innerHTML = '<p>' + content.scrollLeft
 + ' ' + content.scrollTop + '</p>';
         
@@ -23,5 +23,8 @@ setInterval( function() {
         } else if(content.scrollTop > 1423) {
                 content.scrollTop = 827;
         }
-        content.scrollLeft += 1;
 }, 10);
+
+setInterval(function() {
+        content.scrollLeft += 1;
+}, 40);
