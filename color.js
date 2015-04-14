@@ -1,11 +1,3 @@
-var keycode = {
-        'LEFT_ARROW': 37,
-        'RIGHT_ARROW': 39,
-        'UP_ARROW': 38,
-        'DOWN_ARROW': 40,
-        'R_SHIFT': 16
-};
-
 var w = window,
     x = w.innerWidth,
     y = w.innerHeight;
@@ -16,8 +8,6 @@ var d = document.getElementById('prompt');
 
 var content = document.getElementById("window");
 var time_inactive = 0;
-var left = 40;
-var up = 40;
 content.scrollLeft = 435;
 content.scrollTop = 575;
 setInterval(function() {
@@ -43,19 +33,9 @@ setInterval(function() {
 setInterval(function() {
         if(time_inactive >= 4)
                 content.scrollLeft += 1;
-}, left);
-
-setInterval(function() {
-        if(time_inactive >= 4)
-                content.scrollTop += 1;
-}, up);
+}, 40);
 
 document.addEventListener('keydown', function(event) {
         if(event.keyCode)
                 time_inactive = 0;
-        if(event.keyCode == keycode.UP_ARROW) {
-
-        } else if(event.keycode == keycode.DOWN_ARROW) {
-
-        }
 });
