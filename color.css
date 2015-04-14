@@ -54,7 +54,7 @@ a:visited {
         margin: 0 0 0 0;
         overflow-y: scroll;
         overflow-x: hidden;
-        border: 1px solid #FF7300;
+        /*border: 1px solid #FF7300;*/
 }
 
 #window {
