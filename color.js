@@ -7,12 +7,13 @@ var d = document.getElementById('prompt');
 /*d.style.top = y/2 + 'px';*/
 
 var content = document.getElementById("window");
+var time_inactive = 0;
 content.scrollLeft = 435;
 content.scrollTop = 575;
 setInterval(function() {
-        document.getElementById("data").innerHTML = '<p>' + content.scrollLeft
+        /*document.getElementById("data").innerHTML = '<p>' + content.scrollLeft
 + ' ' + content.scrollTop + '</p>';
-        
+        */
         if (content.scrollLeft < 224) {
                 content.scrollLeft = 646;
         } else if(content.scrollLeft > 870) {
@@ -26,5 +27,12 @@ setInterval(function() {
 }, 10);
 
 setInterval(function() {
-        content.scrollLeft += 1;
+        if(time_inactive > 100)
+                content.scrollLeft += 1;
+        time_inactive += 1;
 }, 40);
+
+document.addEventListener('keydown', function(event) {
+        if(event.keyCode)
+                time_inactive = 0;
+});
