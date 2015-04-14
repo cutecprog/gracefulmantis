@@ -16,6 +16,8 @@ var d = document.getElementById('prompt');
 
 var content = document.getElementById("window");
 var time_inactive = 0;
+var left = 40;
+var up = 40;
 content.scrollLeft = 435;
 content.scrollTop = 575;
 setInterval(function() {
@@ -41,12 +43,12 @@ setInterval(function() {
 setInterval(function() {
         if(time_inactive >= 4)
                 content.scrollLeft += 1;
-}, 40);
+}, left);
 
 setInterval(function() {
         if(time_inactive >= 4)
                 content.scrollTop += 1;
-}, 40);
+}, up);
 
 document.addEventListener('keydown', function(event) {
         if(event.keyCode)
