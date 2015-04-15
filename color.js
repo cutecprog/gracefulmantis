@@ -7,6 +7,41 @@ content.scrollTop = 50;
 ctx.beginPath();
 ctx.rect(0, 200, 1200, 800);
 ctx.rect(200, 0, 800, 1200);
+ctx.strokeStyle="#8C713A";
+ctx.stroke();
+ctx.beginPath();
+ctx.rect(250.5, 250.5, 1, 1);
+ctx.rect(252.5, 250.5, 1, 1);
+ctx.rect(252.5, 246.5, 1, 1);
+ctx.rect(256.5, 248.5, 1, 1);
+ctx.rect(258.5, 250.5, 1, 1);
+ctx.rect(260.5, 250.5, 1, 1);
+ctx.rect(262.5, 250.5, 1, 1);
+
+ctx.rect(1050.5, 1050.5, 1, 1);
+ctx.rect(1052.5, 1050.5, 1, 1);
+ctx.rect(1052.5, 1046.5, 1, 1);
+ctx.rect(1056.5, 1048.5, 1, 1);
+ctx.rect(1058.5, 1050.5, 1, 1);
+ctx.rect(1060.5, 1050.5, 1, 1);
+ctx.rect(1062.5, 1050.5, 1, 1);
+
+ctx.rect(1050.5, 250.5, 1, 1);
+ctx.rect(1052.5, 250.5, 1, 1);
+ctx.rect(1052.5, 246.5, 1, 1);
+ctx.rect(1056.5, 248.5, 1, 1);
+ctx.rect(1058.5, 250.5, 1, 1);
+ctx.rect(1060.5, 250.5, 1, 1);
+ctx.rect(1062.5, 250.5, 1, 1);
+
+ctx.rect(250.5, 1050.5, 1, 1);
+ctx.rect(252.5, 1050.5, 1, 1);
+ctx.rect(252.5, 1046.5, 1, 1);
+ctx.rect(256.5, 1048.5, 1, 1);
+ctx.rect(258.5, 1050.5, 1, 1);
+ctx.rect(260.5, 1050.5, 1, 1);
+ctx.rect(262.5, 1050.5, 1, 1);
+ctx.strokeStyle="#FF7300";
 ctx.stroke();
 
 setInterval(function() {

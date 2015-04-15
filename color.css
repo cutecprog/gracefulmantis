@@ -66,10 +66,6 @@ a:visited {
         width: 400px;
         height: 400px;
         background-color: #160812;
-        border: 1px solid #8C713A;
+        /*border: 1px solid #8C713A;*/
         overflow: scroll;
-}
-
-#content {
-        background-color: #8C713A;
 }
