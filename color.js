@@ -6,27 +6,33 @@ content.scrollTop = 50;
 
 function writeCell(state,x,y)
 {
+        xoffset = 800;
+        yoffset = 800;
+        if(x>200)
+                xoffset *= -1;
+        if(y>200)
+                yoffset *= -1;
+        x = x*2 + 200.5;
+        y = y*2 + 200.5;
         if(state) {
-                ctx.rect(200.5+x, 200.5+y, 1, 1);
-                ctx.rect(1000.5+x, 1000.5+y, 1, 1);
-                ctx.rect(200.5+x, 1000.5+y, 1, 1);
-                ctx.rect(1000.5+x, 200.5+y, 1, 1);
+                ctx.rect(x, y, 1, 1);
+                ctx.rect(x+xoffset, y+yoffset, 1, 1);
+                ctx.rect(x, y+yoffset, 1, 1);
+                ctx.rect(x+xoffset, y, 1, 1);
         } else {
-                ctx.clearRect(200.5+x, 200.5+y, 1, 1);
-                ctx.clearRect(1000.5+x, 1000.5+y, 1, 1);
-                ctx.clearRect(200.5+x, 1000.5+y, 1, 1);
-                ctx.clearRect(1000.5+x, 200.5+y, 1, 1);
+                ctx.clearRect(x, y, 1, 1);
+                ctx.clearRect(x+xoffset, y+yoffset, 1, 1);
+                ctx.clearRect(x, y+yoffset, 1, 1);
+                ctx.clearRect(x+xoffset, y, 1, 1);
         }
 }
 
 ctx.beginPath();
-writeCell(true, 50,50);
-writeCell(true, 52,50);
-writeCell(true, 52,46);
-writeCell(true, 56,48);
-writeCell(true, 58,50);
-writeCell(true, 60,50);
-writeCell(true, 62,50);
+for(i=0; i < 100; i++) {
+        x = Math.floor((Math.random() * 400) + 0);
+        y = Math.floor((Math.random() * 400) + 0);
+        writeCell(true, x, y);
+}
 ctx.strokeStyle="#FF7300";
 ctx.stroke();
 
