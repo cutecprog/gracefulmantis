@@ -4,43 +4,29 @@ var time_inactive = 0;
 content.scrollLeft = 50;
 content.scrollTop = 50;
 
+function writeCell(state,x,y)
+{
+        if(state) {
+                ctx.rect(200.5+x, 200.5+y, 1, 1);
+                ctx.rect(1000.5+x, 1000.5+y, 1, 1);
+                ctx.rect(200.5+x, 1000.5+y, 1, 1);
+                ctx.rect(1000.5+x, 200.5+y, 1, 1);
+        } else {
+                ctx.clearRect(200.5+x, 200.5+y, 1, 1);
+                ctx.clearRect(1000.5+x, 1000.5+y, 1, 1);
+                ctx.clearRect(200.5+x, 1000.5+y, 1, 1);
+                ctx.clearRect(1000.5+x, 200.5+y, 1, 1);
+        }
+}
+
 ctx.beginPath();
-ctx.rect(0, 200, 1200, 800);
-ctx.rect(200, 0, 800, 1200);
-ctx.strokeStyle="#8C713A";
-ctx.stroke();
-ctx.beginPath();
-ctx.rect(250.5, 250.5, 1, 1);
-ctx.rect(252.5, 250.5, 1, 1);
-ctx.rect(252.5, 246.5, 1, 1);
-ctx.rect(256.5, 248.5, 1, 1);
-ctx.rect(258.5, 250.5, 1, 1);
-ctx.rect(260.5, 250.5, 1, 1);
-ctx.rect(262.5, 250.5, 1, 1);
-
-ctx.rect(1050.5, 1050.5, 1, 1);
-ctx.rect(1052.5, 1050.5, 1, 1);
-ctx.rect(1052.5, 1046.5, 1, 1);
-ctx.rect(1056.5, 1048.5, 1, 1);
-ctx.rect(1058.5, 1050.5, 1, 1);
-ctx.rect(1060.5, 1050.5, 1, 1);
-ctx.rect(1062.5, 1050.5, 1, 1);
-
-ctx.rect(1050.5, 250.5, 1, 1);
-ctx.rect(1052.5, 250.5, 1, 1);
-ctx.rect(1052.5, 246.5, 1, 1);
-ctx.rect(1056.5, 248.5, 1, 1);
-ctx.rect(1058.5, 250.5, 1, 1);
-ctx.rect(1060.5, 250.5, 1, 1);
-ctx.rect(1062.5, 250.5, 1, 1);
-
-ctx.rect(250.5, 1050.5, 1, 1);
-ctx.rect(252.5, 1050.5, 1, 1);
-ctx.rect(252.5, 1046.5, 1, 1);
-ctx.rect(256.5, 1048.5, 1, 1);
-ctx.rect(258.5, 1050.5, 1, 1);
-ctx.rect(260.5, 1050.5, 1, 1);
-ctx.rect(262.5, 1050.5, 1, 1);
+writeCell(true, 50,50);
+writeCell(true, 52,50);
+writeCell(true, 52,46);
+writeCell(true, 56,48);
+writeCell(true, 58,50);
+writeCell(true, 60,50);
+writeCell(true, 62,50);
 ctx.strokeStyle="#FF7300";
 ctx.stroke();
 
