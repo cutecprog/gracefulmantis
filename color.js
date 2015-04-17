@@ -1,5 +1,6 @@
 var content = document.getElementById("window");
 var ctx = document.getElementById('content').getContext('2d');
+var disp = document.getElementById('data');
 var time_inactive = 0;
 content.scrollLeft = 50;
 content.scrollTop = 50;
@@ -27,15 +28,50 @@ function writeCell(state,x,y)
         }
 }
 
+function readCell(x,y)
+{
+        x = x*2 + 200.5;
+        y = y*2 + 200.5;
+        return ctx.getImageData(x,y,1,1).data;
+}
+
+function neighbors(x,y)
+{
+        n = 0;
+        for(i=-1; i<2; i++)
+                for(j=-1; j<2; j++)
+                        if(readCell(x+i, y+j)[0])
+                                n += 1;
+        return n;
+}
+
+function writeDisp(str)
+{
+	disp.innerHTML = '<p>' + str + '</p>';
+}
+
 ctx.beginPath();
-for(i=0; i < 100; i++) {
+/*for(i=0; i < 400; i++) {
         x = Math.floor((Math.random() * 400) + 0);
         y = Math.floor((Math.random() * 400) + 0);
         writeCell(true, x, y);
-}
+}*/
+writeCell(true, 20,20);
+writeCell(true, 21,20);
+writeCell(true, 20,22);
+writeCell(true, 24,20);
+writeCell(true, 20,21);
 ctx.strokeStyle="#FF7300";
 ctx.stroke();
+writeDisp('bye');
 
+setInterval(function() {
+        /*disp.innerHTML = '<p>' + content.scrollLeft + ', ' + content.scrollTop
+                       + ': ' +  neighbors(20,20) + ' ' + r+g+b + '</p>';*/
+}, 50);
+/*alert(neighbors(50,50) + ' ' + readCell(50,50)[0] + readCell(50,50)[1] +
+readCell(50,50)[2]);
+*/
 setInterval(function() {
         if (content.scrollLeft <= 0) {
                 content.scrollLeft = 800;
