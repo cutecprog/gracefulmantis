@@ -1,27 +1,31 @@
 var content = document.getElementById("window");
 var ctx = document.getElementById('content').getContext('2d');
 var disp = document.getElementById('data');
-var World = new BitSet(160000);
+var World = new BitSet(1600);
 var time_inactive = 0;
 content.scrollLeft = 50;
 content.scrollTop = 50;
 
 function writeCell(state,x,y)
 {
+        World.set(y*40+x, state);
         xoffset = 800;
         yoffset = 800;
-        if(x>200)
+        if(x>=30)
                 xoffset *= -1;
-        if(y>200)
+        else if(x > 10)
+                xoffset = 0;
+        if(y>=30)
                 yoffset *= -1;
-        x = x*2 + 200.5;
-        y = y*2 + 200.5;
+        else if(y > 10)
+                yoffset = 0;
+        x = x*20 + 200;
+        y = y*20 + 200;
         if(state) {
-                ctx.rect(x, y, 1, 1);
-                ctx.rect(x+xoffset, y+yoffset, 1, 1);
-                ctx.rect(x, y+yoffset, 1, 1);
-                ctx.rect(x+xoffset, y, 1, 1);
-                World.set(y*400+x, 1);
+                ctx.rect(x, y, 20, 20);
+                ctx.rect(x+xoffset, y+yoffset, 20, 20);
+                ctx.rect(x, y+yoffset, 20, 20);
+                ctx.rect(x+xoffset, y, 20, 20);
         } else {
                 ctx.clearRect(x, y, 1, 1);
                 ctx.clearRect(x+xoffset, y+yoffset, 1, 1);
@@ -30,31 +34,44 @@ function writeCell(state,x,y)
         }
 }
 
-function readCell(x,y)
+function readCell(world,x,y)
 {
-        x = x*2 + 200.5;
-        y = y*2 + 200.5;
-        return ctx.getImageData(x,y,1,1).data;
+        return world.get((y*40+x)%1600);
 }
 
-function neighbors(x,y)
+function neighbors(world,x,y)
 {
         n = 0;
 	for(i=-1; i<2; i++)
-		if(readCell(x+i,y-1)[0])
-			alert(i+' -1');
+		if(readCell(world,x+i,y-1))
 			n++;
-	if(readCell(x-1,y)[0])
-		alert('-1 0');
+	if(readCell(world,x-1,y))
 		n++;
-	if(readCell(x+1,y)[0])
-		alert('1 0');
+	if(readCell(world,x+1,y))
 		n++;
 	for(i=-1; i<2; i++)
-		if(readCell(x+i,y+1)[0])
-                        alert(i+' +1');
+		if(readCell(world,x+i,y+1))
                         n++;
         return n;
+}
+
+function nextGen()
+{
+        lastWorld = World.clone();
+        for(y=0; y<40; y++) {
+                for(x=0; x<40; x++) {
+                        n = neighbors(lastWorld,x,y);
+                        if(n<2)
+                                writeCell(false, x, y);
+                        else if(n>3)
+                                writeCell(false, x, y);
+                        else if(n==2)
+                                writeCell(readCell(lastWorld,x,y),x,y);
+                        else if(n==3)
+                                writeCell(true,x,y);
+                }
+        }
+
 }
 
 function writeDisp(str)
@@ -63,17 +80,37 @@ function writeDisp(str)
 }
 
 ctx.beginPath();
-/*for(i=0; i < 400; i++) {
-        x = Math.floor((Math.random() * 400) + 0);
-        y = Math.floor((Math.random() * 400) + 0);
+for(i=0; i < 600; i++) {
+        x = Math.floor((Math.random() * 40) + 0) % 40;
+        y = Math.floor((Math.random() * 40) + 0) % 40;
         writeCell(true, x, y);
-}*/
-writeCell(true, 20,20);
-writeCell(true, 21,20);
-writeCell(true, 20,19);
-writeCell(true, 23,20);
+}
+/*
+writeCell(true, 1,3);
+writeCell(true, 2,3);
+writeCell(true, 2,1);
+writeCell(true, 4,2);
+writeCell(true, 5,3);
+writeCell(true, 6,3);
+writeCell(true, 7,3);
+*/
+ctx.fillStyle="#FF7300";
+ctx.fill();
 ctx.strokeStyle="#FF7300";
-ctx.stroke();/*
+ctx.stroke();
+writeDisp(World.toString().slice(-400).replace(/(.{40})/g,"$&" + "<br>"));
+setInterval(function() {
+        ctx.clearRect(0, 0, 1200, 1200);
+        ctx.beginPath();
+        nextGen();
+        ctx.fillStyle="#FF7300";
+        ctx.fill();
+        ctx.strokeStyle="#FF7300";
+        ctx.stroke();
+        writeDisp(World.toString().slice(-1600).replace(/(.{40})/g,"$&" + "<br>"));
+}, 100);
+/*
+alert(neighbors(World, 1,2));
 writeDisp('hi');
 for(i=17; i<23; i++) {
         for(j=17; j<23; j++) {
