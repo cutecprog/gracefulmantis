@@ -6,6 +6,10 @@ var time_inactive = 0;
 content.scrollLeft = 50;
 content.scrollTop = 50;
 
+function mod(n,m) {
+        return ((n % m) + m) % m;
+}
+
 function writeCell(state,x,y)
 {
         World.set(y*40+x, state);
@@ -26,17 +30,12 @@ function writeCell(state,x,y)
                 ctx.rect(x+xoffset, y+yoffset, 20, 20);
                 ctx.rect(x, y+yoffset, 20, 20);
                 ctx.rect(x+xoffset, y, 20, 20);
-        } else {
-                ctx.clearRect(x, y, 1, 1);
-                ctx.clearRect(x+xoffset, y+yoffset, 1, 1);
-                ctx.clearRect(x, y+yoffset, 1, 1);
-                ctx.clearRect(x+xoffset, y, 1, 1);
         }
 }
 
 function readCell(world,x,y)
 {
-        return world.get((y*40+x)%1600);
+        return world.get((mod(y,40))*40+(mod(x,40)));
 }
 
 function neighbors(world,x,y)
@@ -80,12 +79,13 @@ function writeDisp(str)
 }
 
 ctx.beginPath();
+/*
 for(i=0; i < 600; i++) {
         x = Math.floor((Math.random() * 40) + 0) % 40;
         y = Math.floor((Math.random() * 40) + 0) % 40;
         writeCell(true, x, y);
 }
-/*
+*/
 writeCell(true, 1,3);
 writeCell(true, 2,3);
 writeCell(true, 2,1);
@@ -93,12 +93,11 @@ writeCell(true, 4,2);
 writeCell(true, 5,3);
 writeCell(true, 6,3);
 writeCell(true, 7,3);
-*/
 ctx.fillStyle="#FF7300";
 ctx.fill();
 ctx.strokeStyle="#FF7300";
 ctx.stroke();
-writeDisp(World.toString().slice(-400).replace(/(.{40})/g,"$&" + "<br>"));
+writeDisp(World.toString().slice(-1600).replace(/(.{40})/g,"$&" + "<br>"));
 setInterval(function() {
         ctx.clearRect(0, 0, 1200, 1200);
         ctx.beginPath();
