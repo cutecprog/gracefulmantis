@@ -79,13 +79,12 @@ function writeDisp(str)
 }
 
 ctx.beginPath();
-/*
 for(i=0; i < 600; i++) {
         x = Math.floor((Math.random() * 40) + 0) % 40;
         y = Math.floor((Math.random() * 40) + 0) % 40;
         writeCell(true, x, y);
 }
-*/
+/*
 writeCell(true, 1,3);
 writeCell(true, 2,3);
 writeCell(true, 2,1);
@@ -93,6 +92,7 @@ writeCell(true, 4,2);
 writeCell(true, 5,3);
 writeCell(true, 6,3);
 writeCell(true, 7,3);
+*/
 ctx.fillStyle="#FF7300";
 ctx.fill();
 ctx.strokeStyle="#FF7300";
@@ -107,7 +107,7 @@ setInterval(function() {
         ctx.strokeStyle="#FF7300";
         ctx.stroke();
         writeDisp(World.toString().slice(-1600).replace(/(.{40})/g,"$&" + "<br>"));
-}, 100);
+}, 50);
 /*
 alert(neighbors(World, 1,2));
 writeDisp('hi');
