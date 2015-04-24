@@ -8,19 +8,24 @@ input[type=text], textarea {
         -ms-transition: all 0.30s ease-in-out;
         -o-transition: all 0.30s ease-in-out;
         outline: none;
-        padding: 3px 0px 3px 3px;
-        margin: 5px 1px 3px 0px;
+        /*padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;*/
+        margin: 0px 3px 0px 0px;
         border: 1px solid #8C713A;
         background-color: #160812;
         color: #FFFFFF;
         border-radius: 8px;
+        font-size: 9pt;
+        text-align:center;
 }
  
 input[type=text]:focus, textarea:focus {
-  box-shadow: 0 0 5px #FF7300;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid #FF7300;
+        box-shadow: 0 0 5px #FF7300;
+        padding: 3px 3px 3px 3px;
+        margin: -3px 0px 3px 0px;
+        border: 1px solid #FF7300;
+        font-size: 10pt;
+        text-align: center;
 }
 
 body {
@@ -39,4 +44,15 @@ body {
         width: 400px;
         height: 400px;
         overflow: hidden;
+}
+
+#input {
+        width: 150px;
+}
+
+#input input {
+        width: 40px;
+        height: 10pt;
+        float: right;
+        font-family: monospace;
 }
