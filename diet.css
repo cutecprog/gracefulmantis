@@ -2,14 +2,35 @@
     display: none; 
 }
 
+input[type=text], textarea {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+        border: 1px solid #8C713A;
+        background-color: #160812;
+        color: #FFFFFF;
+        border-radius: 8px;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px #FF7300;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #FF7300;
+}
+
 body {
-        background-color: #0a0408;
+        background-color: #0A0408;
         color: #FFFFFF;
         font-family: monospace;
 }
 
 #content {
-        background-color: #ccc;
+        background-color: #CCC;
         position: absolute;
         top: 50%;
         left: 50%;
