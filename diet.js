@@ -10,6 +10,9 @@ var maxIntake = {
         'fat':     0.35
 };
 var carbs, protein, fat, cal;
+document.getElementById('carbs').value = '0';
+document.getElementById('protein').value = '0';
+document.getElementById('fat').value = '0';
 document.getElementById('cal').value = '2400';
 
 document.getElementById('data').innerHTML = '<p>Fat: ' + caloriesPerGram.fat
@@ -27,9 +30,18 @@ setInterval(function()
                 carbs   /= (maxIntake.carbs);
                 protein /= (maxIntake.protein);
                 fat     /= (maxIntake.fat);
-                carbs   = Math.round(carbs * 255)
-                protein = Math.round(protein * 255)
-                fat     = Math.round(fat * 255)
-                document.getElementById('data').innerHTML = '<p>' + carbs
-                        + ' ' + protein + ' ' + fat + '</p>';
+                /* carbs:   yellow
+                   protein: magenta
+                   fat:     cyan     */
+                r  = carbs * 127 + protein * 127;
+                g = carbs * 127 + fat * 127;
+                b = protein * 127 + fat * 127;
+                r = Math.round(r).toString(16);
+                g = Math.round(g).toString(16);
+                b = Math.round(b).toString(16);
+                r = ('0' + r).substr(-2);
+                g = ('0' + g).substr(-2);
+                b = ('0' + b).substr(-2);
+                document.getElementById('content').style.backgroundColor = 
+                '#' + r+g+b;
 }, 100);
