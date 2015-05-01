@@ -1,0 +1,46 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+input[type=text], textarea {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        margin: 0px 3px 0px 0px;
+        border: 1px solid #8C713A;
+        background-color: #160812;
+        color: #FFFFFF;
+        border-radius: 8px;
+        font-size: 9pt;
+        text-align:center;
+}
+ 
+input[type=text]:focus, textarea:focus {
+        box-shadow: 0 0 5px #FF7300;
+        padding: 3px 3px 3px 3px;
+        margin: -3px 0px 3px 0px;
+        border: 1px solid #FF7300;
+        font-size: 10pt;
+        text-align: center;
+}
+
+body {
+        background-color: #000;
+        color: #FFFFFF;
+        font-family: monospace;
+}
+
+#content {
+        background-color: #0966F4;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+        border-radius: 150px;
+        width: 300px;
+        height: 300px;
+        box-shadow: 0 0 30px #0966F4;
+        overflow: hidden;
+}
