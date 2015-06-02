@@ -10,7 +10,7 @@ for (j=0; j < 256; j++) {
                 if (Math.round(i/(b%8+1))%2)
                         data[4000*j+i] = 128;
                 else
-                        data[4000*j+i] = 0 + (Math.pow(i,2) % 256);
+                        data[4000*j+i] = 0 + (Math.pow(i,2) % 128);
         }
 }
 
