@@ -6,11 +6,11 @@ for (j=0; j < 256; j++) {
         a ^= b;
         b ^= a;
         a ^= b;
-        for (var i=0; i<4000; i++) {
-                if (Math.round(i/(b%8+1))%2)
-                        data[4000*j+i] = 128;
+        for (var i=0; i<2000; i++) {
+                if (Math.round(i/(j/10))%2)
+                        data[2000*j+i] = 128;
                 else
-                        data[4000*j+i] = 0 + (Math.pow(i,2) % 128);
+                        data[2000*j+i] = 0;
         }
 }
 
