@@ -1,13 +1,13 @@
 var data = [];
 var a = 1;
 var b = 1;
-for (j=0; j < 256; j++) {
+for (j=1; j <= 256; j++) {
         a = a + b;
         a ^= b;
         b ^= a;
         a ^= b;
         for (var i=0; i<2000; i++) {
-                if (Math.round(i/(j/7))%2)
+                if (i%j == 0)
                         data[2000*j+i] = 128;
                 else
                         data[2000*j+i] = 0;
