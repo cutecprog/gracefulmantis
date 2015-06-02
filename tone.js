@@ -6,12 +6,14 @@ for (j=0; j < 256; j++) {
         a ^= b;
         b ^= a;
         a ^= b;
-        for (var i=0; i<4000; i++)
+        for (var i=0; i<4000; i++) {
                 if (Math.round(i/(b%8+1))%2)
                         data[4000*j+i] = 128;
                 else
-                        data[4000*j+i] = 0 + Math.round(16*Math.random());
+                        data[4000*j+i] = 0 + (Math.pow(i,2) % 256);
+        }
 }
+
 var wave = new RIFFWAVE(data);       // create the wave file
 var audio = new Audio(wave.dataURI); // create the HTML5 audio element
 audio.play();
