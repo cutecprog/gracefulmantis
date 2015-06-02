@@ -1,16 +1,11 @@
 var data = [];
-var a = 1;
-var b = 1;
-for (j=1; j <= 256; j++) {
-        a = a + b;
-        a ^= b;
-        b ^= a;
-        a ^= b;
-        for (var i=0; i<2000; i++) {
-                if ((10*i)%j == 0)
-                        data[2000*j+i] = 128;
+
+for (j=0; j <= 128; j++) {
+        for (i=2000*j; i<2000*(j+1); i++) {
+                if (i%j < j/2)
+                        data[i] = 0;
                 else
-                        data[2000*j+i] = 0;
+                        data[i] = 255;
         }
 }
 
