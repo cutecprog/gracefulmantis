@@ -44,3 +44,8 @@ body {
         box-shadow: 0 0 30px #0966F4;
         overflow: scroll;
 }
+
+#content canvas {
+        background-color: #000;
+        overflow: scroll;
+}

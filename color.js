@@ -95,8 +95,8 @@ writeCell(true, 7,3);
 */
 ctx.fillStyle="#FF7300";
 ctx.fill();
-ctx.strokeStyle="#FF7300";
-ctx.stroke();
+/*ctx.strokeStyle="#FF7300";
+ctx.stroke();*/
 writeDisp(World.toString().slice(-1600).replace(/(.{40})/g,"$&" + "<br>"));
 setInterval(function() {
         ctx.clearRect(0, 0, 1200, 1200);
@@ -104,8 +104,8 @@ setInterval(function() {
         nextGen();
         ctx.fillStyle="#FF7300";
         ctx.fill();
-        ctx.strokeStyle="#FF7300";
-        ctx.stroke();
+        /*ctx.strokeStyle="#FF7300";
+        ctx.stroke();*/
         writeDisp(World.toString().slice(-1600).replace(/(.{40})/g,"$&" + "<br>"));
 }, 50);
 /*
