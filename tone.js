@@ -7,10 +7,10 @@ for (j=0; j < 16; j++) {
         b ^= a;
         a ^= b;
         for (var i=0; i<5000; i++)
-                if (Math.round(i/b)%2)
+                if (Math.round(i/(b%8+1))%2)
                         data[5000*j+i] = 255;
                 else
-                        data[5000*j+i] = 0;
+                        data[5000*j+i] = 100;
 }
 var wave = new RIFFWAVE(data);       // create the wave file
 var audio = new Audio(wave.dataURI); // create the HTML5 audio element
