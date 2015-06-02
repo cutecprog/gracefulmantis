@@ -7,7 +7,7 @@ for (j=0; j < 256; j++) {
         b ^= a;
         a ^= b;
         for (var i=0; i<2000; i++) {
-                if (Math.round(i/(j/10))%2)
+                if (Math.round(i/(j))%2)
                         data[2000*j+i] = 128;
                 else
                         data[2000*j+i] = 0;
