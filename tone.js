@@ -7,7 +7,7 @@ for (j=1; j <= 256; j++) {
         b ^= a;
         a ^= b;
         for (var i=0; i<2000; i++) {
-                if (i%j == 0)
+                if ((10*i)%j == 0)
                         data[2000*j+i] = 128;
                 else
                         data[2000*j+i] = 0;
