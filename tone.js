@@ -1,8 +1,8 @@
 var data = [];
 
-for (j=0; j <= 128; j++) {
+for (j=2; j <= 128; j++) {
         for (i=2000*j; i<2000*(j+1); i++) {
-                step = Math.PI/50;
+                step = Math.PI/j;
                 data[i] = Math.round(127*Math.sin(i * step)+127);
                 //alert(data[i]);
         }
