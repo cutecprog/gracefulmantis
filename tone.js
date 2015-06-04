@@ -2,7 +2,7 @@ var data = [];
 
 for (j=2; j <= 128; j++) {
         for (i=2000*j; i<2000*(j+1); i++) {
-                step = Math.PI/j;
+                step = Math.PI/Math.sqrt(j);
                 data[i] = Math.round(127*Math.sin(i * step)+127);
                 //alert(data[i]);
         }
