@@ -20,9 +20,9 @@ data =
                 }
                 for (var i=position; i < length; i++) {
                         var step = Math.PI/Math.sqrt(n);
-                        this.raw[i] = Math.min( this.raw[i] + Math.round(
-                                                127.5*Math.sin(i * step)
-                                                + 127.5), 255);
+                        this.raw[i] = Math.min( this.raw[i]/2 + Math.round(
+                                                64*Math.sin(i * step)
+                                                + 64), 255);
                 }
         }
 }
@@ -42,7 +42,17 @@ for (var j=0; j<32; j++) {
                 return .5 - Math.random();
         });
         for (var i=0; i<12; i++) {
-                var n = scale[i] + 12;
+                var n = scale[i] + 24;
+                var length = 2000;
+                data.insertTone(j*24000+i*2000, n, length);
+        }
+}
+for (var j=0; j<32; j++) {
+        scale.sort(function() {
+                return .5 - Math.random();
+        });
+        for (var i=0; i<12; i++) {
+                var n = scale[i] + 36;
                 var length = 2000;
                 data.insertTone(j*24000+i*2000, n, length);
         }
