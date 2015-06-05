@@ -26,7 +26,33 @@ data =
                 }
         }
 }
+/*
+data.addTone(4, 2000);
+data.addTone(6, 2000);
+data.addTone(8, 2000);
+data.addTone(9, 2000);
+data.addTone(11, 2000);
+data.addTone(13, 2000);
+data.addTone(15, 2000);
+data.addTone(16, 2000);
 
+data.addTone(28, 2000);
+data.addTone(27, 2000);
+data.addTone(25, 2000);
+data.addTone(23, 2000);
+data.addTone(21, 2000);
+data.addTone(20, 2000);
+data.addTone(18, 2000);
+data.addTone(16, 3000);
+
+data.addTone(28, 8000);
+data.insertTone(data.raw.length - 8000, 16, 8000);
+*/
+data.addTone(30.58, 16000);
+data.insertTone(data.raw.length - 16000, 24.27, 16000);
+data.insertTone(data.raw.length - 16000, 20.41, 16000);
+
+/*
 for (var j=0; j<32; j++) {
         scale.sort(function() {
                 return .5 - Math.random();
@@ -57,7 +83,7 @@ for (var j=0; j<64; j++) {
                 var length = 1500;
                 data.insertTone(j*24000+i*2000, n, length);
         }
-}
+}*/
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
