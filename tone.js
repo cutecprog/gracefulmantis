@@ -27,7 +27,7 @@ data =
         }
 }
 
-/*for (var j=0; j<32; j++) {
+for (var j=0; j<32; j++) {
         scale.sort(function() {
                 return .5 - Math.random();
         });
@@ -36,7 +36,7 @@ data =
                 var length = 2000;
                 data.addTone(n, length);
         }
-}*/
+}
 for (var j=0; j<32; j++) {
         scale.sort(function() {
                 return .5 - Math.random();
@@ -47,7 +47,6 @@ for (var j=0; j<32; j++) {
                 data.insertTone(j*24000+i*2000, n, length);
         }
 }
-alert(data.raw);
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI); // create the HTML5 audio element
