@@ -33,31 +33,32 @@ for (var j=0; j<32; j++) {
         });
         for (var i=0; i<12; i++) {
                 var n = scale[i];
-                var length = 2000;
+                var length = 3000;
                 data.addTone(n, length);
         }
 }
-for (var j=0; j<32; j++) {
+for (var j=0; j<16; j++) {
         scale.sort(function() {
                 return .5 - Math.random();
         });
         for (var i=0; i<12; i++) {
-                var n = scale[i] + 24;
-                var length = 2000;
+                var n = scale[i] + 128;
+                var length = 6000;
                 data.insertTone(j*24000+i*2000, n, length);
         }
 }
-for (var j=0; j<32; j++) {
+for (var j=0; j<64; j++) {
         scale.sort(function() {
                 return .5 - Math.random();
         });
+        var octave = 3 * Math.random() * 12; 
         for (var i=0; i<12; i++) {
-                var n = scale[i] + 36;
-                var length = 2000;
+                var n = scale[i] + octave;
+                var length = 1500;
                 data.insertTone(j*24000+i*2000, n, length);
         }
 }
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
-var audio = new Audio(wave.dataURI); // create the HTML5 audio element
+var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
 audio.play();
