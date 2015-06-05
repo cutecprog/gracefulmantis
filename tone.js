@@ -42,7 +42,7 @@ for (var j=0; j<32; j++) {
                 return .5 - Math.random();
         });
         for (var i=0; i<12; i++) {
-                var n = scale[i];
+                var n = scale[i] + 12;
                 var length = 2000;
                 data.insertTone(j*24000+i*2000, n, length);
         }
