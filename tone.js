@@ -19,7 +19,8 @@ data =
                         this.raw[i] = 0;
                 }
                 for (var i=position; i < length; i++) {
-                        var step = Math.PI/Math.sqrt(n);
+                        //var step = Math.PI/Math.sqrt(n);
+                        var step = Math.PI/(n*2);
                         this.raw[i] = Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
                                                 + 64), 255);
@@ -48,9 +49,15 @@ data.addTone(16, 3000);
 data.addTone(28, 8000);
 data.insertTone(data.raw.length - 8000, 16, 8000);
 */
-data.addTone(30.58, 16000);
-data.insertTone(data.raw.length - 16000, 24.27, 16000);
-data.insertTone(data.raw.length - 16000, 20.41, 16000);
+
+var c_major = [30.58, 27.24, 24.27, 22.91, 20.41, 18.18, 16.2, 15.29]
+
+/*data.addTone(30.58, 16000);
+data.insertTone(data.raw.length - 12000, 24.27, 16000);
+data.insertTone(data.raw.length - 8000, 20.41, 16000);*/
+
+for (var i=0; i < c_major.length; i++)
+        data.addTone(c_major[i], 4000);
 
 /*
 for (var j=0; j<32; j++) {
