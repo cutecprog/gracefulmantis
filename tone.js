@@ -3,6 +3,7 @@ var scale = [4,5,6,7,8,9,10,11,12,13,14,15,16];
 data =
 {
         raw: [],
+        sample_rate: 8000,
         addTone: function(n, length)
         {
                 length += this.raw.length;
