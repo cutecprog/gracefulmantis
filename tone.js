@@ -1,5 +1,3 @@
-var scale = [4,5,6,7,8,9,10,11,12,13,14,15,16];
-
 twelveTone = function(index)
 {
         return 440 * Math.pow(2, index/12.);
@@ -43,6 +41,9 @@ for (var i=0; i < c_major.length; i++)
 
 for(var i=-40; i < 30; i++)
         data.addTone(twelveTone(i),2000);
+
+for(var i=0; i < 144; i++) {
+        n = Math
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
