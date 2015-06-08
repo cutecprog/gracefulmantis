@@ -8,8 +8,7 @@ data =
         {
                 length += this.raw.length;
                 for (var i=this.raw.length; i < length; i++) {
-                        //var step = Math.PI/Math.sqrt(n);
-                        var step = 2*Math.PI/(n);
+                        var step = 2*Math.PI/(8000/n);
                         this.raw[i] = Math.round( 127.5*Math.sin(i * step)
                                                 + 127.5 );
                 }
@@ -21,8 +20,7 @@ data =
                         this.raw[i] = 0;
                 }
                 for (var i=position; i < length; i++) {
-                        //var step = Math.PI/Math.sqrt(n);
-                        var step = 2*Math.PI/(n);
+                        var step = 2*Math.PI/(8000/n);
                         this.raw[i] = Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
                                                 + 64), 255);
@@ -30,7 +28,10 @@ data =
         }
 }
 
-var c_major = [30.58, 27.24, 24.27, 22.91, 20.41, 18.18, 16.2, 15.29]
+var c_major = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25];
+data.addTone(c_major[0], 16000);
+data.insertTone(0, c_major[2], 16000);
+data.insertTone(0, c_major[4], 16000);
 
 for (var i=0; i < c_major.length; i++)
         data.addTone(c_major[i], 4000);
