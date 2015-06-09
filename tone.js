@@ -55,12 +55,20 @@ for (var j=0; j < 12; j++) {
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
-for (var i=0; i < 16000; i++) {
-        ctx.rect(i*2, data.raw[i], 2, 8);
+for (var i=0; i < 600; i++) {
+        ctx.rect(i*2, data.raw[i], 1, 16);
 }
 ctx.fillStyle="#FFF";
 ctx.fill();
-ctx.clearRect(800, 0, 50, 256);
+ctx.clearRect(0, 0, 50, 256);
+
+setInterval(function() {
+        ctx.beginPath();
+        ctx.rect((i*2)%1200, data.raw[i+600], 1, 16);
+        ctx.fill();
+        ctx.clearRect((2*i+50)%1200, 0, 2, 256);
+        i++;
+}, 10);
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
