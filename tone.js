@@ -3,6 +3,14 @@ twelveTone = function(index)
         return 440 * Math.pow(2, index/12.);
 }
 
+shuffled = function(list)
+{
+        list.sort(function() {
+                return .5 - Math.random();
+        });
+        return list;
+}
+
 data =
 {
         raw: [],
@@ -35,19 +43,10 @@ var c_major = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25];
 data.addTone(c_major[0], 16000);
 data.insertTone(0, c_major[2], 16000);
 data.insertTone(0, c_major[4], 16000);
-/*
-for (var i=0; i < c_major.length; i++)
-        data.addTone(c_major[i], 4000);
 
-for(var i=-10; i < 20; i++)
-        data.addTone(twelveTone(i),2000);
-*/
 var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 for (var j=0; j < 12; j++) {
-        scale.sort(function() {
-                return .5 - Math.random();
-        });
-        alert(scale);
+        scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
                 data.addTone(twelveTone(n), 2000);
