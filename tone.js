@@ -19,7 +19,7 @@ data =
         {
                 length += this.raw.length;
                 for (var i=this.raw.length; i < length; i++) {
-                        var step = 2*Math.PI/(8000/n);
+                        var step = 2*Math.PI/(this.sample_rate/n);
                         this.raw[i] = Math.round( 127.5*Math.sin(i * step)
                                                 + 127.5 );
                 }
@@ -31,7 +31,7 @@ data =
                         this.raw[i] = 0;
                 }
                 for (var i=position; i < length; i++) {
-                        var step = 2*Math.PI/(8000/n);
+                        var step = 2*Math.PI/(this.sample_rate/n);
                         this.raw[i] = Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
                                                 + 64), 255);
