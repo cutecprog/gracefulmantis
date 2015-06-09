@@ -55,7 +55,9 @@ for (var j=0; j < 12; j++) {
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
-ctx.rect(600, 50, 800, 50);
+for (var i=0; i < 16000; i++) {
+        ctx.rect(i*2, data.raw[i], 1, 4);
+}
 ctx.fillStyle="#FF7300";
 ctx.fill();
 
