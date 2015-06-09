@@ -53,6 +53,11 @@ for (var j=0; j < 12; j++) {
         }
 }
 
+var ctx = document.getElementById('content').getContext('2d');
+ctx.beginPath();
+ctx.rect(600, 50, 800, 50);
+ctx.fillStyle="#FF7300";
+ctx.fill();
+
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
-//audio.play();
