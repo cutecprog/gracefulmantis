@@ -55,4 +55,4 @@ for (var j=0; j < 12; j++) {
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
-audio.play();
+//audio.play();
