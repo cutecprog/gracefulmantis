@@ -1,0 +1,20 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+body {
+        background-color: #0a0408;
+        color: #FFFFFF;
+        font-family: monospace;
+}
+
+#window {
+        position: absolute;
+        top: 50%;
+        left: 2.5%;
+        width: 95%;
+        height: 256px;
+        margin-top: -128px;
+        background-color: #160812;
+        overflow: scroll;
+}
