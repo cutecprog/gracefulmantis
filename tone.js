@@ -58,8 +58,9 @@ ctx.beginPath();
 for (var i=0; i < 16000; i++) {
         ctx.rect(i*2, data.raw[i], 2, 8);
 }
-ctx.fillStyle="#FF7300";
+ctx.fillStyle="#FFF";
 ctx.fill();
+ctx.clearRect(800, 0, 50, 256);
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
