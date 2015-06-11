@@ -10,10 +10,10 @@ body {
 
 #window {
         position: absolute;
-        top: 50%;
-        left: 2.5%;
-        width: 95%;
-        height: 260px;
-        margin-top: -130px;
+        left: 100%;
+        top: 2.5%;
+        height: 95%;
+        width: 260px;
+        margin-left: -260px;
         overflow: scroll;
 }
