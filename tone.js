@@ -15,26 +15,26 @@ data =
 {
         raw: [],
         sample_rate: 8000,
-        addTone: function(n, length)
+        addTone: function(hertz, length)
         {
                 length += this.raw.length;
                 for (var i=this.raw.length; i < length; i++) {
-                        var step = 2*Math.PI/(this.sample_rate/n);
+                        var step = 2*Math.PI/(this.sample_rate/hertz);
                         this.raw[i] = Math.round( 127.5*Math.sin(i * step)
                                                 + 127.5 );
                 }
         },
-        insertTone: function(position, n, length)
+        insertTone: function(position, hertz, length)
         {
                 length += position; 
                 for (var i=this.raw.length; i < length; i++) {
                         this.raw[i] = 0;
                 }
                 for (var i=position; i < length; i++) {
-                        var step = 2*Math.PI/(this.sample_rate/n);
-                        this.raw[i] = Math.min( this.raw[i]/2 + Math.round(
+                        var step = 2*Math.PI/(this.sample_rate/hertz);
+                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
-                                                + 64), 255);
+                                                + 64), 255) );
                 }
         }
 }
@@ -57,24 +57,24 @@ for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.insertTone(j*24000+i*2000, twelveTone(n-4), 2000);
+                data.insertTone(j*24000+i*2000+16000, twelveTone(n-4), 2000);
         }
 }
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
 for (var i=0; i < 600; i++) {
-        ctx.rect(data.raw[i], i, 16, 1);
+        ctx.rect(data.raw[i], i, 64, 1);
 }
 ctx.fillStyle="#FFF";
 ctx.fill();
-ctx.clearRect(0, 0, 256, 50);
+ctx.clearRect(0, 0, 350, 50);
 
 setInterval(function() {
         ctx.beginPath();
-        ctx.rect(data.raw[i+600], (i)%600,  16, 1);
+        ctx.rect(data.raw[i], (i)%600,  64, 1);
         ctx.fill();
-        ctx.clearRect(0, (i+50)%600, 256, 2);
+        ctx.clearRect(0, (i+50)%600, 350, 2);
         i++;
 }, 10);
 
