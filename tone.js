@@ -49,18 +49,18 @@ var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
-                n = scale[i] - 4;
-                data.addTone(twelveTone(n), 2000);
+                n = scale[i] - 24;
+                data.addTone(twelveTone(n), 500);
         }
 }
-
+/*
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
                 data.insertTone(j*24000+i*2000, twelveTone(n-4), 2000);
         }
-}
+}*/
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
