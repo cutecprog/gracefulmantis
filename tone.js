@@ -65,20 +65,27 @@ for (var j=0; j < 12; j++) {
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
 ctx.moveTo(data.raw[i], 0);
-for (var i=1; i < 600; i++) {
-        ctx.lineTo(data.raw[i], i, 64, 1);
+var i;
+for (i=1; i < 1200; i++) {
+        ctx.lineTo(data.raw[i], i);
 }
 ctx.strokeStyle="#FFF";
+ctx.fillStyle="#FFF";
 ctx.stroke();
 ctx.clearRect(0, 0, 350, 50);
-/*
+
 setInterval(function() {
-        ctx.beginPath();
-        ctx.rect(data.raw[i], (i)%600,  64, 1);
-        ctx.fill();
-        ctx.clearRect(0, (i+50)%600, 350, 2);
+        if (i%600==0) {
+                ctx.beginPath();
+                for (var j=-600; j < 600; j++) {
+                        ctx.lineTo(data.raw[i+j], j+600);
+                }
+                ctx.clearRect(0, 0, 350, 1200);
+                ctx.stroke();
+        }
+        document.getElementById('window').scrollTop = i%600;
         i++;
-}, 10);*/
+}, 10);
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
