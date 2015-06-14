@@ -19,8 +19,19 @@ data =
         {
                 length += this.raw.length;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
-                for (var i=this.raw.length; i < length; i++) {
+                var i = this.raw.length;
+                for (j=0; j < 50; i++, j++) {
                         this.raw[i] = Math.round( 127.5*Math.sin(i * step)
+                                                * (j/50.0)
+                                                + 127.5 );
+                }
+                for (; i < length - 50; i++) {
+                        this.raw[i] = Math.round( 127.5*Math.sin(i * step)
+                                                + 127.5 );
+                }
+                for (var j=50; i < length; i++, j--) {
+                        this.raw[i] = Math.round( 127.5*Math.sin(i * step)
+                                                * (j/50.0)
                                                 + 127.5 );
                 }
         },
