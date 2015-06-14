@@ -20,7 +20,7 @@ data =
                 length += this.raw.length;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 var i = this.raw.length;
-                for (j=0; j < 50; i++, j++) {
+                for (var j=0; j < 50; i++, j++) {
                         this.raw[i] = Math.round( 127.5*Math.sin(i * step)
                                                 * (j/50.0)
                                                 + 127.5 );
@@ -38,15 +38,29 @@ data =
         insertTone: function(position, hertz, length)
         {
                 length += position; 
+                var i;
                 for (var i=this.raw.length; i < length; i++) {
                         this.raw[i] = 0;
                 }
                 var step = 2*Math.PI/(this.sample_rate/hertz);
-                for (var i=position; i < length; i++) {
+                i = position;
+                /*for (var j=0; j < 50; i++, j++) {
+                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 
+                                                + Math.round(64*Math.sin(i * step)
+                                                * (j/50.0)
+                                                + 64), 255) );
+                }*/
+                for (; i < length; i++) {
                         this.raw[i] = Math.round( Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
                                                 + 64), 255) );
                 }
+                /*for (var j=50; i < length; i++, j--) {
+                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 
+                                                + Math.round(64*Math.sin(i * step)
+                                                * (j/50.0)
+                                                + 64), 255) );
+                }*/
         }
 }
 
@@ -57,21 +71,21 @@ data.insertTone(0, c_major[4], 16000);
 */
 var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
-for (var j=0; j < 12; j++) {
+/*for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
                 data.addTone(twelveTone(n), 500);
         }
-}
-/*
+}*/
+
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.insertTone(j*24000+i*2000, twelveTone(n-4), 2000);
+                data.insertTone(j*6000+i*500, twelveTone(n-4), 500);
         }
-}*/
+}
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.beginPath();
