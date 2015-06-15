@@ -44,23 +44,23 @@ data =
                 }
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 i = position;
-                /*for (var j=0; j < 50; i++, j++) {
+                for (var j=0; j < 50; i++, j++) {
                         this.raw[i] = Math.round( Math.min( this.raw[i]/2 
                                                 + Math.round(64*Math.sin(i * step)
                                                 * (j/50.0)
                                                 + 64), 255) );
-                }*/
-                for (; i < length; i++) {
+                }
+                for (; i < length - 50; i++) {
                         this.raw[i] = Math.round( Math.min( this.raw[i]/2 + Math.round(
                                                 64*Math.sin(i * step)
                                                 + 64), 255) );
                 }
-                /*for (var j=50; i < length; i++, j--) {
+                for (var j=50; i < length; i++, j--) {
                         this.raw[i] = Math.round( Math.min( this.raw[i]/2 
                                                 + Math.round(64*Math.sin(i * step)
                                                 * (j/50.0)
                                                 + 64), 255) );
-                }*/
+                }
         }
 }
 
@@ -71,19 +71,19 @@ data.insertTone(0, c_major[4], 16000);
 */
 var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
-/*for (var j=0; j < 12; j++) {
+for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.addTone(twelveTone(n), 500);
+                data.addTone(twelveTone(n), 2000);
         }
-}*/
+}
 
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.insertTone(j*6000+i*500, twelveTone(n-4), 500);
+                data.insertTone(j*24000+i*2000, twelveTone(n-4), 2000);
         }
 }
 
@@ -110,7 +110,7 @@ setInterval(function() {
         }
         document.getElementById('window').scrollTop = i%600;
         i++;
-}, 10);
+}, 1);
 
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
