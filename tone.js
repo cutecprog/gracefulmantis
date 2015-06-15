@@ -64,11 +64,6 @@ data =
         }
 }
 
-var c_major = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25];
-/*data.addTone(c_major[0], 16000);
-data.insertTone(0, c_major[2], 16000);
-data.insertTone(0, c_major[4], 16000);
-*/
 var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 for (var j=0; j < 12; j++) {
