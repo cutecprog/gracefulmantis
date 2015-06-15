@@ -83,22 +83,15 @@ for (var j=0; j < 12; j++) {
 }
 
 var ctx = document.getElementById('content').getContext('2d');
-ctx.beginPath();
-ctx.moveTo(data.raw[i], 0);
-var i;
-for (i=1; i < 1200; i++) {
-        ctx.lineTo(data.raw[i], i);
-}
 ctx.strokeStyle="#FFF";
-ctx.fillStyle="#FFF";
-ctx.stroke();
-ctx.clearRect(0, 0, 350, 50);
 
+var i=0;
 setInterval(function() {
         if (i%600==0) {
                 ctx.beginPath();
-                for (var j=-600; j < 600; j++) {
-                        ctx.lineTo(data.raw[i+j], j+600);
+                ctx.moveTo(data.raw[i], 0);
+                for (var j=1; j < 1200; j++) {
+                        ctx.lineTo(data.raw[i+j], j);
                 }
                 ctx.clearRect(0, 0, 350, 1200);
                 ctx.stroke();
