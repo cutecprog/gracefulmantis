@@ -64,8 +64,10 @@ data =
         }
 }
 
-for (var i=1; i < 840; i++)
-        data.addTone(i*i,i);
+for (var i=100; i < 640; i++)
+        data.addTone(i,50);
+for (var i=100; i < 640; i++)
+        data.addTone(i,Math.random()*100);
 
 /*var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
