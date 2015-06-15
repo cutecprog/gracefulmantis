@@ -64,8 +64,8 @@ data =
         }
 }
 
-for (var i=1; i < 440; i++)
-        data.addTone(i,i);
+for (var i=1; i < 840; i++)
+        data.addTone(i*i,i);
 
 /*var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
