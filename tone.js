@@ -1,6 +1,6 @@
 twelveTone = function(index)
 {
-        return 440 * Math.pow(2, index/12.);
+        return 440 * Math.pow(2, index/1200.);
 }
 
 shuffled = function(list)
@@ -64,10 +64,12 @@ data =
         }
 }
 
-for (var i=100; i < 640; i++)
+/*for (var i=100; i < 640; i++)
         data.addTone(i,50);
 for (var i=100; i < 640; i++)
-        data.addTone(i,Math.random()*100);
+        data.addTone(i,Math.random()*100);*/
+for (var i=0; i < 1200; i+=100)
+        data.addTone(twelveTone(i),8000);
 
 /*var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
