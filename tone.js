@@ -106,5 +106,11 @@ setInterval(function() {
         i++;
 }, 1);
 
+t=0;
+setInterval(function() {
+        t++;
+        document.getElementById('info').innerHTML = '<p>'+t+'</p>';
+}, 1000);
+
 var wave = new RIFFWAVE(data.raw);       // create the wave file
 var audio = new Audio(wave.dataURI);     // create the HTML5 audio element
