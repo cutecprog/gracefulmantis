@@ -49,6 +49,9 @@ data =
                 var i = this.raw.length;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 tone = this.genTone(step, i, length);
+                for (var j=0; i < length; i++, j++) {
+                        this.add(tone[j]);
+                }
                 /*var step = 2*Math.PI/(this.sample_rate/hertz);
                 for (var j=0; j < 50; i++, j++) {
                         this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
