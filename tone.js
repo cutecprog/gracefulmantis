@@ -56,11 +56,10 @@ data =
         insertTone: function(position, hertz, length)
         {
                 length += position; 
-                var i;
-                for (var i=this.raw.length; i < length; i++) {
-                        this.raw[i] = 128;
+                for (var j=this.raw.length; j < length; j++) {
+                        this.raw[j] = 128;
                 }
-                i = position;
+                var i = position;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 tone = this.genTone(step, i, length);
                 for (var j=0; i < length; i++, j++) {
