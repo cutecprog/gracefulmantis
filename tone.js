@@ -15,6 +15,10 @@ data =
 {
         raw: [],
         sample_rate: 8000,
+        add: function(value)
+        {
+                this.raw[this.raw.length] = Math.round(value);
+        },
         addTone: function(hertz, length)
         {
                 length += this.raw.length;
