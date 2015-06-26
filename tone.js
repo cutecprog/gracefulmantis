@@ -46,27 +46,16 @@ data =
         {
                 length += position; 
                 var i;
-                for (var i=this.raw.length; i < length; i++) {
-                        this.raw[i] = 0;
-                }
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 i = position;
                 for (var j=0; j < 50; i++, j++) {
-                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 
-                                                + Math.round(64*Math.sin(i * step)
-                                                * (j/50.0)
-                                                + 64), 255) );
+                        this.insert(i, 127.5*Math.sin(i*step)*(j/50.0)+127.5);
                 }
                 for (; i < length - 50; i++) {
-                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 + Math.round(
-                                                64*Math.sin(i * step)
-                                                + 64), 255) );
+                        this.insert(i, 127.5*Math.sin(i*step)+127.5);
                 }
                 for (var j=50; i < length; i++, j--) {
-                        this.raw[i] = Math.round( Math.min( this.raw[i]/2 
-                                                + Math.round(64*Math.sin(i * step)
-                                                * (j/50.0)
-                                                + 64), 255) );
+                        this.insert(i, 127.5*Math.sin(i*step)*(j/50.0)+127.5);
                 }
         }
 }
