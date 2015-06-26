@@ -27,7 +27,7 @@ data =
                                                 this.raw[position]/2 + value/2,
                                                 255 ) );
         },
-        tone: function(step, i, length)
+        genTone: function(step, i, length)
         {
                 for (var j=0; j < 50; i++, j++) {
                         this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
@@ -44,7 +44,7 @@ data =
                 length += this.raw.length;
                 var i = this.raw.length;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
-                this.tone(step, i, length);
+                this.genTone(step, i, length);
                 /*var step = 2*Math.PI/(this.sample_rate/hertz);
                 for (var j=0; j < 50; i++, j++) {
                         this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
