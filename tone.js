@@ -71,7 +71,16 @@ for (var i=100; i < 640; i++)
 /*for (var i=0; i < 1200; i+=100)
         data.addTone(twelveTone(i),8000);
 */
-var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
+
+data.addTone(twelveTone(-4500), 256000);
+data.insertTone(0, twelveTone(-4200), 256000);
+for (var j=0; j < 256000; j++)
+        data.raw[j] = Math.min( data.raw[j] + (Math.random()/Math.random()), 255);
+for (var j=0; j < 256000; j++)
+        data.raw[j] = Math.min( data.raw[j] + (Math.random()*32), 255);
+
+
+/*var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
@@ -87,7 +96,7 @@ for (var j=0; j < 12; j++) {
                 n = scale[i] - 4;
                 data.insertTone(j*24000+i*2000, twelveTone((n-4)*100), 2000);
         }
-}
+}*/
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.strokeStyle="#FFF";
