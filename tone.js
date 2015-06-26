@@ -19,6 +19,14 @@ data =
         {
                 this.raw[this.raw.length] = Math.round(value);
         },
+        insert: function(position, value)
+        {
+                while (position > this.raw.length)
+                        this.add(128);
+                this.raw[position] = Math.round( Math.min(
+                                                this.raw[position]/2 + value/2,
+                                                255 ) );
+        },
         addTone: function(hertz, length)
         {
                 length += this.raw.length;
