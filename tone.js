@@ -25,18 +25,13 @@ data =
                 var step = 2*Math.PI/(this.sample_rate/hertz);
                 var i = this.raw.length;
                 for (var j=0; j < 50; i++, j++) {
-                        this.raw[i] = Math.round( 127.5*Math.sin(i * step)
-                                                * (j/50.0)
-                                                + 127.5 );
+                        this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
                 }
                 for (; i < length - 50; i++) {
-                        this.raw[i] = Math.round( 127.5*Math.sin(i * step)
-                                                + 127.5 );
+                        this.add(127.5*Math.sin(i*step) + 127.5);
                 }
                 for (var j=50; i < length; i++, j--) {
-                        this.raw[i] = Math.round( 127.5*Math.sin(i * step)
-                                                * (j/50.0)
-                                                + 127.5 );
+                        this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
                 }
         },
         insertTone: function(position, hertz, length)
@@ -75,7 +70,7 @@ for (var i=100; i < 640; i++)
 /*for (var i=0; i < 1200; i+=100)
         data.addTone(twelveTone(i),8000);
 */
-for (var j=0; j< 32; j++) {
+/*for (var j=0; j< 32; j++) {
         data.addTone(twelveTone(-4500), 8000);
         data.insertTone(j*800, twelveTone(-4200), 8000);
 }
@@ -83,9 +78,9 @@ for (var j=0; j < 256000; j++)
         data.raw[j] = Math.min( data.raw[j] + (Math.random()/Math.random()), 255);
 for (var j=0; j < 256000; j++)
         data.raw[j] = Math.min( data.raw[j] + (Math.random()*32), 255);
+*/
 
-
-/*var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
+var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
@@ -101,7 +96,7 @@ for (var j=0; j < 12; j++) {
                 n = scale[i] - 4;
                 data.insertTone(j*24000+i*2000, twelveTone((n-4)*100), 2000);
         }
-}*/
+}
 
 var ctx = document.getElementById('content').getContext('2d');
 ctx.strokeStyle="#FFF";
