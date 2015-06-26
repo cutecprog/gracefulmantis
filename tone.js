@@ -29,22 +29,26 @@ data =
         },
         genTone: function(step, i, length)
         {
+                tone = [];
                 for (var j=0; j < 50; i++, j++) {
-                        this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
+                        tone[tone.length] = 127.5*Math.sin(i*step) * (j/50.0)
+                                                        + 127.5;
                 }
                 for (; i < length - 50; i++) {
-                        this.add(127.5*Math.sin(i*step) + 127.5);
+                        tone[tone.length] = 127.5*Math.sin(i*step) + 127.5;
                 }
                 for (var j=50; i < length; i++, j--) {
-                        this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
+                        tone[tone.length] = 127.5*Math.sin(i*step) * (j/50.0)
+                                                        + 127.5;
                 }
+                return tone;
         },
         addTone: function(hertz, length)
         {
                 length += this.raw.length;
                 var i = this.raw.length;
                 var step = 2*Math.PI/(this.sample_rate/hertz);
-                this.genTone(step, i, length);
+                tone = this.genTone(step, i, length);
                 /*var step = 2*Math.PI/(this.sample_rate/hertz);
                 for (var j=0; j < 50; i++, j++) {
                         this.add(127.5*Math.sin(i*step) * (j/50.0) + 127.5);
