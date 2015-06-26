@@ -14,7 +14,7 @@ shuffled = function(list)
 data =
 {
         raw: [],
-        sample_rate: 8000,
+        sample_rate: 3000,
         add: function(value)
         {
                 this.raw[this.raw.length] = Math.round(value);
@@ -85,8 +85,8 @@ for (var j=0; j < 256000; j++)
         data.raw[j] = Math.min( data.raw[j] + (Math.random()*32), 255);
 */
 /*
-data.insertTone(800,  440, 800);
-data.insertTone(3200, 600, 800);*/
+data.insertTone(800,  440, 8000);
+data.insertTone(3200, 600, 8009);*/
 
 var scale = [0,1,2,3,4,5,6,7,8,9,10,11];
 
@@ -94,7 +94,7 @@ for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.addTone(twelveTone(n*100), 2000);
+                data.addTone(twelveTone(n*100), 750);
         }
 }
 
@@ -102,7 +102,7 @@ for (var j=0; j < 12; j++) {
         scale = shuffled(scale);
         for (var i=0; i < 12; i++) {
                 n = scale[i] - 4;
-                data.insertTone(j*24000+i*2000, twelveTone((n-4)*100), 2000);
+                data.insertTone(j*9000+i*750, twelveTone((n-4)*100), 750);
         }
 }
 
