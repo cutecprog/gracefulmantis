@@ -71,9 +71,10 @@ for (var i=100; i < 640; i++)
 /*for (var i=0; i < 1200; i+=100)
         data.addTone(twelveTone(i),8000);
 */
-
-data.addTone(twelveTone(-4500), 256000);
-data.insertTone(0, twelveTone(-4200), 256000);
+for (var j=0; j< 32; j++) {
+        data.addTone(twelveTone(-4500), 8000);
+        data.insertTone(j*800, twelveTone(-4200), 8000);
+}
 for (var j=0; j < 256000; j++)
         data.raw[j] = Math.min( data.raw[j] + (Math.random()/Math.random()), 255);
 for (var j=0; j < 256000; j++)
